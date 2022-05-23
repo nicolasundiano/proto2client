@@ -5,6 +5,7 @@ import {IProductBrandList} from "../shared/models/product-brand-models/product-b
 import {IProductTypeList} from "../shared/models/product-type-models/product-type-list";
 import {map} from "rxjs";
 import {ProductListPagedParams} from "../shared/models/product-models/product-list-paged-params";
+import {IProductIndividual} from "../shared/models/product-models/product-individual";
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,10 @@ export class ShopService {
       .pipe(map(response => {
         return response.body;
       }));
+  }
+
+  getProduct(id: number) {
+    return this.http.get<IProductIndividual>(this.baseUrl + 'products/' + id);
   }
 
   getProductBrands() {

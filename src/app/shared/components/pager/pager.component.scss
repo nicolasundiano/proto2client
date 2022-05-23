@@ -1,0 +1,10 @@
+::ng-deep .page-link {
+  color: #0053ac;
+}
+
+::ng-deep .page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #0053ac;
+  border-color: #0053ac;
+}

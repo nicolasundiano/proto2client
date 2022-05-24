@@ -1,0 +1,7 @@
+<div class="container mt-5">
+  <h4 >Internal Server Error - refreshing the page will make the exception dissapear</h4>
+  <ng-container *ngIf="err">
+    <h5 class="text-danger">Error: {{err.message}}</h5>
+    <code class="mt-5" style="background-color: whitesmoke">{{err.details}}</code>
+  </ng-container>
+</div>

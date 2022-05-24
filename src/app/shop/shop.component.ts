@@ -11,7 +11,7 @@ import {ProductListPagedParams} from "../shared/models/product-models/product-li
   styleUrls: ['./shop.component.scss']
 })
 export class ShopComponent implements OnInit {
-  @ViewChild('search', {static: true}) search: ElementRef
+  @ViewChild('search', {static: false}) search: ElementRef
   products: IProduct[];
   productBrands: IProductBrand[];
   productTypes: IProductType[];

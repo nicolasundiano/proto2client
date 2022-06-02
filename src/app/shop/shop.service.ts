@@ -1,15 +1,16 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {map} from "rxjs";
-import {IProductBrandListResponse} from "../shared/models/product-brand-models/product-brand";
-import {IProductTypeListResponse} from "../shared/models/product-type-models/product-type";
-import {IProductResponse, IProductListPagedResponse, ProductListPagedParams} from "../shared/models/product-models/product";
+import {IProductBrandListResponse} from "../shared/models/product-brand";
+import {IProductTypeListResponse} from "../shared/models/product-type";
+import {IProductResponse, IProductListPagedResponse, ProductListPagedParams} from "../shared/models/product";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShopService {
-  baseUrl = 'https://localhost:5001/api/'
+  apiUrl = environment.apiUrl
 
   constructor(private http: HttpClient) {
   }
@@ -34,21 +35,21 @@ export class ShopService {
       params = params.append('search', productParams.search);
     }
 
-    return this.http.get<IProductListPagedResponse>(this.baseUrl + 'products', {observe: 'response', params})
+    return this.http.get<IProductListPagedResponse>(this.apiUrl + 'products', {observe: 'response', params})
       .pipe(map(response => {
         return response.body;
       }));
   }
 
   getProduct(id: number) {
-    return this.http.get<IProductResponse>(this.baseUrl + 'products/' + id);
+    return this.http.get<IProductResponse>(this.apiUrl + 'products/' + id);
   }
 
   getProductBrands() {
-    return this.http.get<IProductBrandListResponse>(this.baseUrl + 'product-brands')
+    return this.http.get<IProductBrandListResponse>(this.apiUrl + 'product-brands')
   }
 
   getProductTypes() {
-    return this.http.get<IProductTypeListResponse>(this.baseUrl + 'product-types')
+    return this.http.get<IProductTypeListResponse>(this.apiUrl + 'product-types')
   }
 }

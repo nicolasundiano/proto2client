@@ -1,9 +1,19 @@
 export interface IUser {
+  id: number;
   email: string;
-  displayName: string;
   token: string;
   firstName: string;
   lastName: string;
+
+}
+
+export interface ICurrentUserResponse {
+  token: string;
+  user: IUser
+}
+
+export interface IUserAddress {
+  id: number;
   street: string;
   city: string;
   state: string;
@@ -11,9 +21,8 @@ export interface IUser {
   zipCode: string;
 }
 
-export interface ICurrentUserResponse {
-  token: string;
-  user: IUser
+export interface IUserAddressResponse {
+  address: IUserAddress;
 }
 
 export interface IEmailExistsResponse {

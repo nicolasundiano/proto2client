@@ -8,6 +8,10 @@ export interface IOrderResponse {
   order: IOrder;
 }
 
+export interface IOrderListResponse {
+  orders: IOrder[];
+}
+
 export interface IAddress {
   id: number;
   street: string;
